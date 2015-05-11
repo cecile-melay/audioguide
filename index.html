@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="Bebopop" />
+		<meta name="viewport" content="width=device-width"/>
+		<script src='jquery-1.10.2.min.js'></script>
+		<script>
+		$(document).ready(function () {
+			var audio1 = $("#audio1")[0];
+			var audio2 = $("#audio2")[0];
+			var audio3 = $("#audio3")[0];
+			var audio4 = $("#audio4")[0];
+			var audio5 = $("#audio5")[0];
+			var audio9 = $("#audio9")[0];
+			var audio10 = $("#audio10")[0];
+			var audio11 = $("#audio11")[0];
+			var audio12 = $("#audio12")[0];
+			var audio13 = $("#audio13")[0];
+			var audio14 = $("#audio14")[0];
+			var audio16 = $("#audio16")[0];
+			var audio18 = $("#audio18")[0];
+			var audio19 = $("#audio19")[0];
+			var audio21 = $("#audio21")[0];
+			var audio23 = $("#audio23")[0];
+			var audio24 = $("#audio24")[0];
+			var audio26 = $("#audio26")[0];
+			var audio27 = $("#audio27")[0];
+			
+			var clicks = 0;
+			$('section .audio_1').click(function () {
+				if (clicks == 0) {
+					$('.hide .content_1 audio').addClass("afficher_audio");
+					$('.hide .content_1').addClass("afficher_infos");
+					$('.hide .content_1 .infos_texte_audio').addClass("afficher_infos_texte_audio");
+					$('section span').addClass("fond_actif");
+					$('.hide .content_1').addClass("fadein");
+					audio1.play();
+					clicks = clicks + 1;
+					console.log(clicks);
+				} else {				
+					audio1.pause();
+					$('.hide .content_1 audio').removeClass("afficher_audio");
+					$('.hide .content_1').removeClass("afficher_infos");
+					$('.hide .content_1 .infos_texte_audio').removeClass("afficher_infos_texte_audio");
+					$('section span').removeClass("fond_actif");
+					clicks = clicks - 1;
+					console.log(clicks)
+				}
+			});
+			$('section .audio_2').click(function () {
+				if (clicks == 0) {
+					$('section .audio_2 audio').addClass("afficher_audio");
+					$('section .audio_2').addClass("afficher_infos");
+					$('section .audio_2 .infos_texte_audio').addClass("afficher_infos_texte_audio");
+					$('section span').addClass("fond_actif");
+					audio2.play();
+					clicks = clicks + 1;
+				} else {
+					audio2.pause();
+					$('section .audio_2 audio').removeClass("afficher_audio");
+					$('section .audio_2').removeClass("afficher_infos");
+					$('section .audio_2 .infos_texte_audio').removeClass("afficher_infos_texte_audio");
+					$('section span').removeClass("fond_actif");
+					clicks = clicks - 1;
+				}
+			});
+			
+		});
+		</script>
+		<title>Cartographie sonore de Chalon-sur-Saône</title>		
+	</head>	
+	<style>
+	* {
+	transition:all ease 0.5s;
+	padding:0;
+	margin:0;
+	font-family: 'arial';
+	color: #961440;
+	position:relative;
+	box-sizing: border-box;
+	}
+	.hide .content {
+	display:none;
+	}
+	.fadein {
+	display:block;
+	}
+	.clear {
+	clear:both;
+	}
+	header, footer, .liste {
+	width:100%;
+	max-width:1100px;
+	margin:auto;
+	z-index:2;
+	position:relative;
+	}
+	article {
+	padding-top:225px;
+	}
+	.logo {
+	position:absolute;
+	z-index:2;
+	width:38%;
+	margin-left: -3px;
+	}
+	section {
+	margin-top:150px;
+	width:100%;
+	max-width:1100px;
+	height:700px;
+	background:url('carto-final.jpg') no-repeat;
+	background-size:contain;
+	margin:auto;
+	position:relative;
+	z-index:1;
+	overflow:hidden;
+	}
+	section div:before {
+	content:"";
+	position:absolute;
+	background:url('symbole-carto.png') no-repeat;
+	width:50px;
+	height:50px;
+	text-align:center;
+	cursor:pointer;
+	-webkit-filter: drop-shadow(3px 4px 3px rgba(0,0,0,0.2));
+	top: -50px;
+	left: -25px;
+	}
+	section .afficher_infos:before, section .afficher_infos p {
+	opacity:0;
+	}
+	.numero {
+	position:absolute;
+	top: -49px;
+	left: -6px;
+	}
+	section div {
+	position:relative;
+	cursor:pointer;
+	width: 10px;
+	height: 10px;
+	background: blue;
+	}
+	section div:hover, .liste li:hover, header ul li:hover {
+	    -webkit-filter: drop-shadow(3px 4px 3px rgba(0,0,0,0.3)) drop-shadow(-2px 1px 3px rgba(0,0,0,0.3));
+	}
+	section .audio_1 {
+	margin-left: 93%;
+	margin-top: 20%;
+	}
+	section .audio_2 {
+	margin-left: 15%;
+	margin-top: 25%;
+	}
+	section div p {
+	margin-top:12px;
+	font-family:'arial';
+	color:#961440;
+	}
+	section div audio {
+	display:none;
+	}
+	.afficher_audio {
+	display:block;
+	width:250px;
+	margin:auto;
+	}
+	.afficher_infos {
+	background:#fff;
+	z-index: 3;
+	display:block !important;
+	top: 442px;
+	width: 300px;
+	height: 200px;
+	position:fixed;
+	margin-top:0;
+	margin:auto;
+	left: 39.3%;
+	}
+	.afficher_infos .numero {
+	display:none;
+	}
+	.infos_texte_audio {
+	text-align: center;
+    padding: 27px;
+	}
+	section .afficher_infos .afficher_infos_texte_audio {
+	display:block;
+	opacity:1;
+	}
+	.fond_actif {
+	background:rgba(0,0,0,0.5);
+	width:100%;
+	height:100%;
+	display:block;
+	position:absolute;
+	}
+	.legende {
+	position:absolute;
+	right:0;
+	top:20px;
+	width:62%;
+	}
+	.legende ul li {
+	width:30%;
+	display:block;
+	float:left;
+	position:relative;
+	cursor:pointer;
+	}
+	.legende h2 {
+	position:relative;
+	display:inline-block;
+	text-transform: uppercase;
+    font-size: 1em;
+	margin:0 10px;
+	}
+	.legende .right, .legende .left {
+	background:#961440;
+	height:5px;
+	display:block;
+	margin-top:10px;
+	}
+	.legende .right {
+	width:70%;
+	float:right;
+	}
+	.legende .left {
+	width:10%;
+	margin-left:-35px;
+	float:left;
+	z-index: 3;
+	}
+	.legende img {
+	margin-bottom:-20px;
+	}
+	.legende p {
+	margin-top:20px;
+	text-align:center;
+	}
+	.liste li:before {
+	content:"1";
+	position:absolute;
+	background:url('symbole-carto.png') no-repeat;
+	width:50px;
+	height:50px;
+	text-align:center;
+	cursor:pointer;
+	-webkit-filter: drop-shadow(3px 4px 3px rgba(0,0,0,0.2));
+	top: 35px;
+	left:15px;
+	padding-top:12px;
+	}
+	.liste #l_2:before {
+	content:"2";
+	}
+	.liste #l_3:before {
+	content:"3";
+	}
+	.liste #l_4:before {
+	content:"4";
+	}
+	.liste #l_5:before {
+	content:"5";
+	}
+	.liste #l_6:before {
+	content:"6";
+	}
+	.liste #l_7:before {
+	content:"7";
+	}
+	.liste #l_8:before {
+	content:"8";
+	}
+	.liste #l_9:before {
+	content:"9";
+	}
+	.liste #l_10:before {
+	content:"10";
+	}
+	.liste #l_11:before {
+	content:"11";
+	}
+	.liste #l_12:before {
+	content:"12";
+	}
+	.liste #l_13:before {
+	content:"13";
+	}
+	.liste #l_14:before {
+	content:"14";
+	}
+	.liste #l_15:before {
+	content:"15";
+	}
+	.liste #l_16:before {
+	content:"16";
+	}
+	.liste #l_17:before {
+	content:"17";
+	}
+	.liste #l_18:before {
+	content:"18";
+	}
+	.liste #l_19:before {
+	content:"19";
+	}
+	.liste #l_20:before {
+	content:"20";
+	}
+	.liste #l_21:before {
+	content:"21";
+	}
+	.liste #l_22:before {
+	content:"22";
+	}
+	.liste #l_23:before {
+	content:"23";
+	}
+	.liste #l_24:before {
+	content:"24";
+	}
+	.liste #l_25:before {
+	content:"25";
+	}
+	.liste #l_26:before {
+	content:"26";
+	}
+	.liste #l_27:before {
+	content:"27";
+	}
+	.liste #l_28:before {
+	content:"28";
+	}
+	.liste {
+	}
+	.liste li {
+	padding:50px;
+	padding-left:70px;
+	padding-right:25px;
+	list-style-type:none;
+	cursor:pointer;
+	width:24.5%;
+	float:left;
+	text-transform:uppercase;
+	font-size:0.7em;
+	}
+	.liste li:hover {
+	background:#eee;
+	}
+	footer {
+	margin-top:45px;
+	}
+	footer p {
+	color:#453D2E;
+	font-size:1em;
+	}
+	.copyright {
+	font-size: 0.7em;
+	text-align: center;
+	padding: 20px;
+	background: #ddd;
+	margin-top: 10px;
+	}
+	@media screen and (max-width: 870px) {
+	  .logo {
+	  }
+	  article {
+	  }
+		.afficher_infos {
+		top:0px;
+		}
+	}
+	@media screen and (max-width: 645px) {
+	  .logo {
+		position:relative;
+		width:109%;
+	  }
+	  .legende {
+	  position:relative;
+	  width:100%;
+	  }
+	}
+	</style>
+	
+	<body>
+		<div class="hide">
+			<div class="content content_1">
+				<p class="infos_texte_audio">1 </br>Le dernier banc</br>du quai Sainte-Marie</p>
+				<audio id="audio1" preload="auto" controls>
+					<source src="1.wav" controls></source>
+					Your browser isn't invited for super fun time.
+				</audio>
+			</div>
+			<div class="content content_2">
+				<p class="infos_texte_audio">2 </br>Le conservatoire</p>
+				<audio id="audio2" preload="auto" controls>
+					<source src="2.mp3" controls></source>
+					Your browser isn't invited for super fun time.
+				</audio>
+			</div>
+			<div class="content content_4">
+				<p class="infos_texte_audio">4</br>Boîte aux lettres</p>
+				<audio id="audio4" preload="auto" controls>
+					<source src="4.mp3" controls></source>
+					Your browser isn't invited for super fun time.
+				</audio>
+			</div>
+			<div class="content content_5">
+				<p class="infos_texte_audio">5</br>Structure</br>métalliques près de la gare</p>
+				<audio id="audio5" preload="auto" controls>
+					<source src="5.mp3" controls></source>
+					Your browser isn't invited for super fun time.
+				</audio>
+			</div>
+			<div class="content content_9">
+				<p class="infos_texte_audio">9</br>Parcmètre</br>place de Beaune</p>
+					<audio id="audio9" preload="auto" controls>
+						<source src="9.wav" controls></source>
+						Your browser isn't invited for super fun time.
+					</audio>
+			</div>
+			<div class="content content_10">
+				<p class="infos_texte_audio">10</br>Statue</br>de Jésus Christ</p>
+				<audio id="audio10" preload="auto" controls>
+					<source src="10.wav" controls></source>
+					Your browser isn't invited for super fun time.
+				</audio>
+			</div>
+			<div class="content content_11">
+				<p class="infos_texte_audio">11</br>Statue</br>de Jésus Christ</p>
+				<audio id="audio11" preload="auto" controls>
+					<source src="11.mp3" controls></source>
+					Your browser isn't invited for super fun time.
+				</audio>
+			</div>
+			<div class="content content_12">
+				<p class="infos_texte_audio">12</br>La maison</br>des vins</p>
+				<audio id="audio12" preload="auto" controls>
+					<source src="12.wav" controls></source>
+					Your browser isn't invited for super fun time.
+				</audio>
+			</div>
+			<div class="content content_13">
+				<p class="infos_texte_audio">13</br>Parc des oiseaux</p>
+				<audio id="audio13" preload="auto" controls>
+					<source src="13.mp3" controls></source>
+					Your browser isn't invited for super fun time.
+				</audio>
+			</div>
+			<div class="content content_14">
+				<p class="infos_texte_audio">14</br>Parc</br>Georges Nouelle</p>
+				<audio id="audio14" preload="auto" controls>
+					<source src="14.wav" controls></source>
+					Your browser isn't invited for super fun time.
+				</audio>
+			</div>
+			<div class="content content_16">
+				<p class="infos_texte_audio">16</br>Appartement 35</br>rue Saint-Georges</p>
+				<audio id="audio16" preload="auto" controls>
+					<source src="16.mp3" controls></source>
+					Your browser isn't invited for super fun time.
+				</audio>
+			</div>
+			<div class="content content_18">
+				<p class="infos_texte_audio">18</br>Rue</br>de Strasbourg</p>
+				<audio id="audio18" preload="auto" controls>
+					<source src="18.mp3" controls></source>
+					Your browser isn't invited for super fun time.
+				</audio>
+			</div>
+			<div class="content content_19">
+				<p class="infos_texte_audio">19</br>Hôtel</br>de ville</p>
+				<audio id="audio19" preload="auto" controls>
+					<source src="19.mp3" controls></source>
+					Your browser isn't invited for super fun time.
+				</audio>
+			</div>
+			<div class="content content_21">
+				<p class="infos_texte_audio">21</br>Quais</p>
+				<audio id="audio21" preload="auto" controls>
+					<source src="21.mp3" controls></source>
+					Your browser isn't invited for super fun time.
+				</audio>
+			</div>
+			<div class="content content_24">
+				<p class="infos_texte_audio">24</br>Place</br>du thêatre</p>
+					<audio id="audio24" preload="auto" controls>
+						<source src="24.mp3" controls></source>
+						Your browser isn't invited for super fun time.
+					</audio>
+			</div>
+			<div class="content content_26">
+				<p class="infos_texte_audio">26</br>Square</br>Thevenin</p>
+				<audio id="audio26" preload="auto" controls>
+					<source src="26.mp3" controls></source>
+					Your browser isn't invited for super fun time.
+				</audio>
+			</div>
+			<div class="content content_27">
+				<p class="infos_texte_audio">27 </br>Cathédrale</br>Saint-Vincent</p>
+					<audio id="audio27" preload="auto" controls>
+						<source src="27.mp3" controls></source>
+						Your browser isn't invited for super fun time.
+					</audio>
+			</div>
+		</div>
+		<header>
+			<h1><img class='logo' src='logo.png' alt="cartographie sonore de la ville Chalon-sur-Saône"/></h1>
+			<div class="legende">
+				<span class="left"></span><h2>Légende</h2><span class="right"></span>
+				<ul>
+					<li><img src="audioguide.png"/><p>Lieu d'un audioguide ciblé</p></li>
+					<li><img src="place.png"/><span>Place</span></li>
+					<li><img src="parc.png"/>Parc</li>
+					<li><img src="ruepietonne.png"/>Rue piétone</li>
+					<li><img src="riviere.png"/>Rivière</li>
+				</ul>
+			</div>
+		</header>
+		<article>
+			<section>
+			<span></span>
+				<div class="audio_1">
+					<p class="numero">1</p>
+				</div>
+				<div class="audio_2">
+					<p class="numero">2</p>
+				</div>
+				<div>
+					<p class="numero">4</p>
+				</div>
+				<div>
+					<p class="numero">5</p>
+				</div>
+				<div>
+					<p class="numero">9</p>
+				</div>
+				<div>
+					<p class="numero">10</p>
+				</div>
+				<div>
+					<p class="numero">11</p>
+				</div>
+				<div>
+					<p class="numero">12</p>
+				</div>
+				<div>
+					<p class="numero">13</p>
+				</div>
+				<div>
+					<p class="numero">14</p>
+				</div>
+				<div>
+					<p class="numero">16</p>
+				</div>
+				<div>
+					<p class="numero">18</p>
+				</div>
+				<div>
+					<p class="numero">19</p>
+				</div>
+				<div>
+					<p class="numero">21</p>
+				</div>
+				<div>
+					<p class="numero">23</p>
+				</div>
+				<div>
+					<p class="numero">24</p>
+				</div>
+				<div>
+					<p class="numero">26</p>
+				</div>
+				<div>
+					<p class="numero">27</p>
+				</div>
+			</section>
+		</article>
+		<ul class="liste">
+			<li id="l_1">Le dernier Banc du quai Sainte-Marie</li>
+			<li id="l_2">Le conservatoire</li>
+			<li id="l_4">Boîte aux lettres</li>
+			<li id="l_5">Structures métalliques près de la gare</li>
+			<div class="clear"></div>
+			<li id="l_9">Parcmètre place de Beaune</li>
+			<li id="l_10">Statue de Jésus Christ</li>
+			<li id="l_11">Statue de Jésus Christ</li>
+			<li id="l_12">La maison des vins</li>
+			<div class="clear"></div>
+			<li id="l_13">Parc des oiseaux ou parc Georges Nouelle</li>
+			<li id="l_14">Parc des oiseaux ou parc Georges Nouelle</li>
+			<li id="l_16">Appartement 35 rue Saint-Georges</li>
+			<li id="l_18">Rue de Strasbourg</li>
+			<div class="clear"></div>
+			<li id="l_19">Hôtel de ville</li>
+			<li id="l_21">Quais</li>
+			<li id="l_23">Place du théâtre</li>
+			<li id="l_24">Place du théâtre</li>
+			<div class="clear"></div>
+			<li id="l_26">Square Thevenin</li>
+			<li id="l_27">Cathédrale Saint-Vincent</li>
+			<div class="clear"></div>
+		</ul>
+		<footer>
+		<p>Les étudiants de la licence professionnelle Techniques et Activités de l'Image et du Son (TAIS) dirigés par Anatole Buttin professeur Acquisition et traitement du son à l'IUT de Chalon-sur-Saône.</p> 
+		<p class="copyright"> © Design et Graphisme : Mégane Petziny, Design UX, UI et développé par Cécile Melay.</p>
+		</footer>
+	</body>
+</html>
